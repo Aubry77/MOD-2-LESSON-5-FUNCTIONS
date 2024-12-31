@@ -1,22 +1,56 @@
-"""This application provides functions to manage 
-a shopping list, including adding items, removing items, 
-and printing the list."""
+"""
+This module provides basic arithmetic operations and a simple calculator function.
+"""
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return "Cannot divide by zero"
+    return a / b
+
+def calculator():
+    try:
+        operation = input("Choose operation (add, subtract, multiply, divide): ").lower()
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        if operation == "add":
+            print(f"The result is: {add(num1, num2)}")
+        elif operation == "subtract":
+            print(f"The result is: {subtract(num1, num2)}")
+        elif operation == "multiply":
+            print(f"The result is: {multiply(num1, num2)}")
+        elif operation == "divide":
+            print(f"The result is: {divide(num1, num2)}")
+        else:
+            print("Invalid operation!")
+    except ValueError:
+        print("Invalid input! Please enter numeric values.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+if __name__ == "__main__":
+    calculator()
 
 
-from ast import main
-
+"""
+This application provides functions to manage a shopping list, including adding items, removing items, and printing the list.
+"""
 
 def add_item(shopping_list, item):
-    
-   # Add an item to the shopping list.
-    
     shopping_list.append(item)
     print(f"{item} added to the list.")
 
 def remove_item(shopping_list, item):
-    
-   # Remove an item from the shopping list.
-    
     if item in shopping_list:
         shopping_list.remove(item)
         print(f"{item} removed from the list.")
@@ -24,17 +58,11 @@ def remove_item(shopping_list, item):
         print(f"{item} not found in the list.")
 
 def print_list(shopping_list):
-    
-   # Print the shopping list.
-    
     print("Shopping List:")
     for item in shopping_list:
         print(f"- {item}")
 
-def shopping_list_maker():
-    
-    # main function to interact with the shopping list.
-    
+def shopping_list_manager():
     shopping_list = []
     while True:
         action = input("Choose action (add, remove, print, quit): ").lower()
@@ -49,7 +77,8 @@ def shopping_list_maker():
         elif action == "quit":
             break
         else:
-            print("Invalid action")
+            print("Invalid action!")
 
+# Example usage
 if __name__ == "__main__":
-    shopping_list_maker()
+    shopping_list_manager()
